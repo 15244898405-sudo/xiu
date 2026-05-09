@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>oneah 的刘耀文追星花费记录</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">For Liu Yaowen Only</p>
+          <h1>Luv15_y 的刘耀文追星花费记录</h1>
+          <p class="hero-text">
+            把每一笔门票、交通、酒店、吃饭、应援物、专辑和周边的钱都记下来，顺手看看这些花费已经可以换成哪些 LV 和 Chanel 包。
+          </p>
+          <div class="hero-tags">
+            <span>舞台</span>
+            <span>应援</span>
+            <span>见面会</span>
+            <span>刘耀文</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <p class="mini-label">耀文专项预算</p>
+          <strong id="totalSpendHero">¥0</strong>
+          <p id="heroHint">今天开始攒数据，看看追刘耀文的爱有多贵。</p>
+        </div>
+      </header>
+
+      <section class="mood-strip">
+        <article class="mood-card">
+          <p class="eyebrow">Fan Mode</p>
+          <h3>线下追场也要算清楚</h3>
+          <p>从门票、路费到酒店和夜宵，每一笔都是真实的“刘耀文成本”。</p>
+        </article>
+        <article class="mood-card">
+          <p class="eyebrow">Bag Mode</p>
+          <h3>把爱换算成包</h3>
+          <p>看看这些追星花费，已经能抵几只 LV 或 Chanel，冲动消费会瞬间具象化。</p>
+        </article>
+        <article class="mood-card accent-card">
+          <p class="eyebrow">Oneah Ledger</p>
+          <h3>喜欢要热烈，记账要清醒</h3>
+          <p>这个页面就是给 Luv15_y 的专属小账本，手机上也能随手记。</p>
+        </article>
+      </section>
+
+      <main class="dashboard">
+        <section class="panel panel-form">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Spend Tracker</p>
+              <h2>新增一笔花费</h2>
+            </div>
+          </div>
+
+          <form id="expenseForm" class="expense-form">
+            <label>
+              <span>花费名称</span>
+              <input
+                type="text"
+                id="expenseTitle"
+                name="title"
+                placeholder="例如：演唱会门票、生日应援、专辑补邮"
+                required
+              />
+            </label>
+
+            <div class="grid-two">
+              <label>
+                <span>金额</span>
+                <input
+                  type="number"
+                  id="expenseAmount"
+                  name="amount"
+                  min="0"
+                  step="0.01"
+                  placeholder="0.00"
+                  required
+                />
+              </label>
+
+              <label>
+                <span>日期</span>
+                <input type="date" id="expenseDate" name="date" required />
+              </label>
+            </div>
+
+            <div class="grid-two">
+              <label>
+                <span>分类</span>
+                <select id="expenseCategory" name="category">
+                  <option value="门票">门票</option>
+                  <option value="交通">交通</option>
+                  <option value="酒店">酒店</option>
+                  <option value="吃饭">吃饭</option>
+                  <option value="应援物">应援物</option>
+                  <option value="专辑">专辑</option>
+                  <option value="周边">周边</option>
+                  <option value="代言">代言</option>
+                  <option value="其他">其他</option>
+                </select>
+              </label>
+
+              <label>
+                <span>备注</span>
+                <input
+                  type="text"
+                  id="expenseNote"
+                  name="note"
+                  placeholder="可选，比如抢票手续费、拼邮"
+                />
+              </label>
+            </div>
+
+            <button type="submit" class="primary-btn">记下这笔钱</button>
+          </form>
+        </section>
+
+        <section class="panel panel-stats">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Overview</p>
+              <h2>追星账本总览</h2>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card">
+              <span>累计总额</span>
+              <strong id="totalSpend">¥0</strong>
+            </article>
+            <article class="stat-card">
+              <span>记录笔数</span>
+              <strong id="expenseCount">0</strong>
+            </article>
+            <article class="stat-card">
+              <span>单笔均值</span>
+              <strong id="averageSpend">¥0</strong>
+            </article>
+            <article class="stat-card">
+              <span>本月花费</span>
+              <strong id="monthSpend">¥0</strong>
+            </article>
+          </div>
+
+          <div class="category-box">
+            <div class="category-box-head">
+              <h3>分类统计</h3>
+              <span>哪种花得最多，一眼看出来</span>
+            </div>
+            <div id="categoryBreakdown" class="category-breakdown"></div>
+          </div>
+        </section>
+
+        <section class="panel panel-insight">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">YaoWen Mode</p>
+              <h2>追星费用提醒</h2>
+            </div>
+          </div>
+          <div class="insight-list">
+            <article class="insight-item">
+              <strong>门票不是全部</strong>
+              <p>很多时候真正贵的是“为了去见刘耀文”产生的连带消费，比如高铁、打车、酒店和夜宵。</p>
+            </article>
+            <article class="insight-item">
+              <strong>应援物最容易碎片化</strong>
+              <p>手幅、透扇、贴纸、小卡册、灯牌电池这些单笔不大，但积累得非常快。</p>
+            </article>
+            <article class="insight-item">
+              <strong>包包换算最直观</strong>
+              <p>当追星花费开始接近一只 Neverfull 或 Chanel 小包的时候，页面会马上提醒她。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel panel-monthly">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Monthly Bill</p>
+              <h2>月度账单</h2>
+            </div>
+            <p class="section-note">看看 oneah 每个月为刘耀文花了多少。</p>
+          </div>
+          <div id="monthlyBreakdown" class="monthly-breakdown"></div>
+        </section>
+
+        <section class="panel panel-bags">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Luxury Exchange</p>
+              <h2>这些钱能换成什么包</h2>
+            </div>
+            <p class="section-note">
+              以页面内置包款价格估算，方便直观看“追星花费 = 几分之几个 LV / Chanel 包”。
+            </p>
+          </div>
+
+          <div id="bagComparison" class="bag-grid"></div>
+        </section>
+
+        <section class="panel panel-wishlist">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Wish List</p>
+              <h2>愿望包排行榜</h2>
+            </div>
+            <p class="section-note">按离目标还差多少钱排序，先看最容易买到的。</p>
+          </div>
+          <div id="wishlistRanking" class="wishlist-ranking"></div>
+        </section>
+
+        <section class="panel panel-list">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Ledger</p>
+              <h2>花费明细</h2>
+            </div>
+            <button id="clearAllBtn" class="ghost-btn" type="button">清空全部记录</button>
+          </div>
+
+          <div id="expenseList" class="expense-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <template id="expenseItemTemplate">
+      <article class="expense-item">
+        <div class="expense-main">
+          <div class="expense-topline">
+            <h3 class="expense-title"></h3>
+            <strong class="expense-amount"></strong>
+          </div>
+          <div class="expense-meta">
+            <span class="expense-category"></span>
+            <span class="expense-date"></span>
+          </div>
+          <p class="expense-note"></p>
+        </div>
+        <button class="delete-btn" type="button">删除</button>
+      </article>
+    </template>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
