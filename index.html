@@ -3,253 +3,147 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Luv15_y 的刘耀文追星花费记录</title>
+    <title>Peter Xu 生存记录</title>
+    <meta
+      name="description"
+      content="一个为 Peter Xu 准备的生存记录网站，收藏在南非学飞时拍下的风景，以及被天气和吃饭问题折磨的日常。"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div class="page-shell">
-      <header class="hero">
+    <div class="sky-noise" aria-hidden="true"></div>
+
+    <header class="hero">
+      <nav class="topbar">
+        <span class="brand">Peter Xu survival log</span>
+        <div class="topbar-links">
+          <a href="#gallery">存活证据</a>
+          <a href="#journal">生存记录</a>
+          <a href="#guide">更新方式</a>
+        </div>
+      </nav>
+
+      <section class="hero-inner">
         <div class="hero-copy">
-          <p class="eyebrow">For Liu Yaowen Only</p>
-          <h1>Luv15_y 的刘耀文追星花费记录</h1>
+          <p class="eyebrow">St. George, Flight School, Still Alive</p>
+          <h1>Peter Xu 在圣乔治学飞期间的生存记录。</h1>
           <p class="hero-text">
-            把每一笔门票、交通、酒店、吃饭、应援物、专辑和周边的钱都记下来，顺手看看这些花费已经可以换成哪些 LV 和 Chanel 包。
+            这不是一本煽情日记，也不是特别正式的作品集。它更像一份阶段性存活证明：天气不好、训练被卡、饭不太行，但海岸线还是很好看，人也总算还在往前熬。
           </p>
-          <div class="hero-tags">
-            <span>舞台</span>
-            <span>应援</span>
-            <span>见面会</span>
-            <span>刘耀文</span>
+          <div class="hero-actions">
+            <a class="primary-btn" href="#gallery">看存活证据</a>
+            <a class="secondary-btn" href="#guide">准备长期发布</a>
           </div>
         </div>
-        <div class="hero-card">
-          <p class="mini-label">耀文专项预算</p>
-          <strong id="totalSpendHero">¥0</strong>
-          <p id="heroHint">今天开始攒数据，看看追刘耀文的爱有多贵。</p>
-        </div>
-      </header>
 
-      <section class="mood-strip">
-        <article class="mood-card">
-          <p class="eyebrow">Fan Mode</p>
-          <h3>线下追场也要算清楚</h3>
-          <p>从门票、路费到酒店和夜宵，每一笔都是真实的“刘耀文成本”。</p>
+        <aside class="hero-card">
+          <p class="eyebrow">Current Signal</p>
+          <div class="signal-item">
+            <span>所在章节</span>
+            <strong id="currentChapter">loading...</strong>
+          </div>
+          <div class="signal-item">
+            <span>已收录片段</span>
+            <strong id="entryCount">0</strong>
+          </div>
+          <div class="signal-item">
+            <span>最近状态</span>
+            <strong id="latestMood">loading...</strong>
+          </div>
+        </aside>
+      </section>
+    </header>
+
+    <main class="page-shell">
+      <section class="intro-grid">
+        <article class="info-card">
+          <p class="eyebrow">Why This Exists</p>
+          <h2>天气不配合，饭也不稳定，但人总得想办法活下来。</h2>
+          <p>
+            学飞本来就够难了，再加上天气反复、进度悬着、吃饭问题时不时来一下，日子很容易变成纯消耗。这个站不是为了总结大道理，只是把那些还撑得住的瞬间先留起来。
+          </p>
         </article>
-        <article class="mood-card">
-          <p class="eyebrow">Bag Mode</p>
-          <h3>把爱换算成包</h3>
-          <p>看看这些追星花费，已经能抵几只 LV 或 Chanel，冲动消费会瞬间具象化。</p>
-        </article>
-        <article class="mood-card accent-card">
-          <p class="eyebrow">Oneah Ledger</p>
-          <h3>喜欢要热烈，记账要清醒</h3>
-          <p>这个页面就是给 Luv15_y 的专属小账本，手机上也能随手记。</p>
+
+        <article class="quote-card">
+          <p>“活下来hhh。”</p>
         </article>
       </section>
 
-      <main class="dashboard">
-        <section class="panel panel-form">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Spend Tracker</p>
-              <h2>新增一笔花费</h2>
-            </div>
-          </div>
-
-          <form id="expenseForm" class="expense-form">
-            <label>
-              <span>花费名称</span>
-              <input
-                type="text"
-                id="expenseTitle"
-                name="title"
-                placeholder="例如：演唱会门票、生日应援、专辑补邮"
-                required
-              />
-            </label>
-
-            <div class="grid-two">
-              <label>
-                <span>金额</span>
-                <input
-                  type="number"
-                  id="expenseAmount"
-                  name="amount"
-                  min="0"
-                  step="0.01"
-                  placeholder="0.00"
-                  required
-                />
-              </label>
-
-              <label>
-                <span>日期</span>
-                <input type="date" id="expenseDate" name="date" required />
-              </label>
-            </div>
-
-            <div class="grid-two">
-              <label>
-                <span>分类</span>
-                <select id="expenseCategory" name="category">
-                  <option value="门票">门票</option>
-                  <option value="交通">交通</option>
-                  <option value="酒店">酒店</option>
-                  <option value="吃饭">吃饭</option>
-                  <option value="应援物">应援物</option>
-                  <option value="专辑">专辑</option>
-                  <option value="周边">周边</option>
-                  <option value="代言">代言</option>
-                  <option value="其他">其他</option>
-                </select>
-              </label>
-
-              <label>
-                <span>备注</span>
-                <input
-                  type="text"
-                  id="expenseNote"
-                  name="note"
-                  placeholder="可选，比如抢票手续费、拼邮"
-                />
-              </label>
-            </div>
-
-            <button type="submit" class="primary-btn">记下这笔钱</button>
-          </form>
-        </section>
-
-        <section class="panel panel-stats">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Overview</p>
-              <h2>追星账本总览</h2>
-            </div>
-          </div>
-
-          <div class="stats-grid">
-            <article class="stat-card">
-              <span>累计总额</span>
-              <strong id="totalSpend">¥0</strong>
-            </article>
-            <article class="stat-card">
-              <span>记录笔数</span>
-              <strong id="expenseCount">0</strong>
-            </article>
-            <article class="stat-card">
-              <span>单笔均值</span>
-              <strong id="averageSpend">¥0</strong>
-            </article>
-            <article class="stat-card">
-              <span>本月花费</span>
-              <strong id="monthSpend">¥0</strong>
-            </article>
-          </div>
-
-          <div class="category-box">
-            <div class="category-box-head">
-              <h3>分类统计</h3>
-              <span>哪种花得最多，一眼看出来</span>
-            </div>
-            <div id="categoryBreakdown" class="category-breakdown"></div>
-          </div>
-        </section>
-
-        <section class="panel panel-insight">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">YaoWen Mode</p>
-              <h2>追星费用提醒</h2>
-            </div>
-          </div>
-          <div class="insight-list">
-            <article class="insight-item">
-              <strong>门票不是全部</strong>
-              <p>很多时候真正贵的是“为了去见刘耀文”产生的连带消费，比如高铁、打车、酒店和夜宵。</p>
-            </article>
-            <article class="insight-item">
-              <strong>应援物最容易碎片化</strong>
-              <p>手幅、透扇、贴纸、小卡册、灯牌电池这些单笔不大，但积累得非常快。</p>
-            </article>
-            <article class="insight-item">
-              <strong>包包换算最直观</strong>
-              <p>当追星花费开始接近一只 Neverfull 或 Chanel 小包的时候，页面会马上提醒她。</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel panel-monthly">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Monthly Bill</p>
-              <h2>月度账单</h2>
-            </div>
-            <p class="section-note">看看 oneah 每个月为刘耀文花了多少。</p>
-          </div>
-          <div id="monthlyBreakdown" class="monthly-breakdown"></div>
-        </section>
-
-        <section class="panel panel-bags">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Luxury Exchange</p>
-              <h2>这些钱能换成什么包</h2>
-            </div>
-            <p class="section-note">
-              以页面内置包款价格估算，方便直观看“追星花费 = 几分之几个 LV / Chanel 包”。
-            </p>
-          </div>
-
-          <div id="bagComparison" class="bag-grid"></div>
-        </section>
-
-        <section class="panel panel-wishlist">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Wish List</p>
-              <h2>愿望包排行榜</h2>
-            </div>
-            <p class="section-note">按离目标还差多少钱排序，先看最容易买到的。</p>
-          </div>
-          <div id="wishlistRanking" class="wishlist-ranking"></div>
-        </section>
-
-        <section class="panel panel-list">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Ledger</p>
-              <h2>花费明细</h2>
-            </div>
-            <button id="clearAllBtn" class="ghost-btn" type="button">清空全部记录</button>
-          </div>
-
-          <div id="expenseList" class="expense-list"></div>
-        </section>
-      </main>
-    </div>
-
-    <template id="expenseItemTemplate">
-      <article class="expense-item">
-        <div class="expense-main">
-          <div class="expense-topline">
-            <h3 class="expense-title"></h3>
-            <strong class="expense-amount"></strong>
-          </div>
-          <div class="expense-meta">
-            <span class="expense-category"></span>
-            <span class="expense-date"></span>
-          </div>
-          <p class="expense-note"></p>
+      <section class="section-head" id="gallery">
+        <div>
+          <p class="eyebrow">Field Evidence</p>
+          <h2>存活证据墙</h2>
         </div>
-        <button class="delete-btn" type="button">删除</button>
-      </article>
-    </template>
+        <p>海、风、礁石和岸线，都是 Peter Xu 在这段时间里留下来的现场记录。</p>
+      </section>
+
+      <section id="galleryGrid" class="gallery-grid" aria-live="polite"></section>
+
+      <section class="section-head" id="journal">
+        <div>
+          <p class="eyebrow">Survival Notes</p>
+          <h2>生存时间线</h2>
+        </div>
+        <p>重点不是抒情，是记下天气、训练和吃饭到底怎么折磨人。</p>
+      </section>
+
+      <section id="journalList" class="journal-list" aria-live="polite"></section>
+
+      <section class="memory-panel">
+        <div class="memory-copy">
+          <p class="eyebrow">Notes for Peter</p>
+          <h2>等记录越来越多，这里会变成一份完整的圣乔治生存档案。</h2>
+          <p>
+            以后回头看，也许最先记住的不只是考试和小时数，还有那些被天气打断的计划、吃不顺的饭，以及某些突然很好看的海。
+          </p>
+        </div>
+        <div class="memory-stats" id="memoryStats"></div>
+      </section>
+
+      <section class="section-head" id="guide">
+        <div>
+          <p class="eyebrow">Update Guide</p>
+          <h2>以后怎么继续更新</h2>
+        </div>
+        <p>我已经把结构做成适合 GitHub Pages 的静态站了。</p>
+      </section>
+
+      <section class="guide-grid">
+        <article class="guide-card">
+          <span>01</span>
+          <h3>放证据</h3>
+          <p>把 Peter Xu 的照片放进 `photos/` 文件夹，比如 `photos/runway-sunset.jpg`。</p>
+        </article>
+        <article class="guide-card">
+          <span>02</span>
+          <h3>加一句吐槽</h3>
+          <p>打开 `script.js`，在最上面的 `photoEntries` 和 `journalEntries` 里继续追加天气、训练和吃饭的记录。</p>
+        </article>
+        <article class="guide-card">
+          <span>03</span>
+          <h3>长期存档</h3>
+          <p>把文件上传到仓库，开启 GitHub Pages，这份圣乔治生存记录就能长期在线访问。</p>
+        </article>
+      </section>
+    </main>
+
+    <dialog id="lightbox" class="lightbox">
+      <button id="lightboxClose" class="lightbox-close" type="button" aria-label="关闭">
+        close
+      </button>
+      <img id="lightboxImage" alt="" />
+      <div class="lightbox-copy">
+        <p id="lightboxMeta" class="eyebrow"></p>
+        <h3 id="lightboxTitle"></h3>
+        <p id="lightboxStory"></p>
+      </div>
+    </dialog>
 
     <script src="./script.js"></script>
   </body>
